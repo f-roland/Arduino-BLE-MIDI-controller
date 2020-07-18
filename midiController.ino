@@ -117,27 +117,18 @@ void buttonPressed(uint8_t buttonNumber)
 void serialButtonPressed(uint16_t value)
 {
   uint16_t buttonValues[5] = {1000, 900, 600, 400, 4};
+  uint8_t i = 0;
 
-  if (value >= buttonValues[0])
+  do
   {
-    buttonPressed(0);
-  }
-  else if (value >= buttonValues[1])
-  {
-    buttonPressed(1);
-  }
-  else if (value >= buttonValues[2])
-  {
-    buttonPressed(2);
-  }
-  else if (value >= buttonValues[3])
-  {
-    buttonPressed(3);
-  }
-  else if (value >= buttonValues[4])
-  {
-    buttonPressed(4);
-  }
+    if (value >= buttonValues[i])
+    {
+      buttonPressed(i);
+      break;
+    }
+
+    i++;
+  } while (i <= 4);
 }
 
 /**
